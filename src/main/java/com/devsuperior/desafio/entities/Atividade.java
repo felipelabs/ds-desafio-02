@@ -1,16 +1,44 @@
 package com.devsuperior.desafio.entities;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.MapsId;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_atividade")
 public class Atividade {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	private String descricao;
 	private Double preco;
+	
+	
+	@OneToMany(mappedBy = "categoria")
+    private List<Categoria> categoria = new ArrayList<>();
+
+	@OneToMany(mappedBy = "blocos")
+	@OneToOne
+	@MapsId
+	@JoinColumn(name = "atividade_id")
+    private List<Bloco> bloco = new ArrayList<>();		
+	
+	@OneToMany(mappedBy = "participantes")
+    private Set<Participantes> participantes = new HashSet<>();
 	
 	public Atividade() {
 	}
