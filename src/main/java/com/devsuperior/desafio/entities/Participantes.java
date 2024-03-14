@@ -8,8 +8,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -23,14 +21,10 @@ public class Participantes {
 	private String nome;
 	
 	@Column(unique = true)
-	private String email;	
+	private String email;
 	
-	@ManyToOne
-    @JoinColumn(name = "atividade_id")
-    private Participantes participantes;
-	
-	@OneToMany(mappedBy = "atividades")
-    private Set<Atividade> atividade = new HashSet<>();
+	@OneToMany(mappedBy = "participantes")
+    private Set<Atividade> atividades = new HashSet<>();
 	
 	public Participantes() {		
 	}
@@ -63,6 +57,10 @@ public class Participantes {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Set<Atividade> getAtividades() {
+		return atividades;
 	}
 		
 

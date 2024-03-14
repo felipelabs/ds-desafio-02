@@ -1,19 +1,11 @@
 package com.devsuperior.desafio.entities;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.MapsId;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,18 +19,17 @@ public class Atividade {
 	private String descricao;
 	private Double preco;
 	
+	@ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
 	
-	@OneToMany(mappedBy = "categoria")
-    private List<Categoria> categoria = new ArrayList<>();
-
-	@OneToMany(mappedBy = "blocos")
-	@OneToOne
-	@MapsId
-	@JoinColumn(name = "atividade_id")
-    private List<Bloco> bloco = new ArrayList<>();		
+	@ManyToOne
+    @JoinColumn(name = "bloco_id")
+    private Bloco bloco;
 	
-	@OneToMany(mappedBy = "participantes")
-    private Set<Participantes> participantes = new HashSet<>();
+	@ManyToOne
+    @JoinColumn(name = "participantes_id")
+    private Participantes participantes;
 	
 	public Atividade() {
 	}
@@ -81,5 +72,6 @@ public class Atividade {
 	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
-		
+
+
 }

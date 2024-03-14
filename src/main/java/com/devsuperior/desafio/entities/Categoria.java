@@ -1,11 +1,13 @@
 package com.devsuperior.desafio.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 
@@ -18,9 +20,8 @@ public class Categoria {
 	private Integer id;
 	private String categoria;
 	
-	@ManyToOne
-    @JoinColumn(name = "atividade_id")
-    private Participantes participantes;
+	@OneToMany(mappedBy = "categoria")
+    private Set<Atividade> atividades = new HashSet<>();
 	
 	public Categoria() {		
 	}
@@ -45,5 +46,10 @@ public class Categoria {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
+
+	public Set<Atividade> getAtividades() {
+		return atividades;
+	}
+	
 	
 }

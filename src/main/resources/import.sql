@@ -10,5 +10,10 @@ insert into tb_bloco(inicio,fim) values('2017-09-26 08:00:00', '2017-09-26 11:00
 insert into tb_categoria(categoria) values('Curso');
 insert into tb_categoria(categoria) values('Oficina');
 
-insert into tb_atividade(nome,descricao,preco) values('Curso de HTML','Aprenda HTML de forma pratica',80.00);
-insert into tb_atividade(nome,descricao,preco) values('Oficina de GitHub','Controle versões de seus projwetos',50.00);
+insert into tb_atividade(nome,descricao,preco,categoria_id,bloco_id,participantes_id) values('Curso de HTML','Aprenda HTML de forma pratica',80.00,1,1,1);
+insert into tb_atividade(nome,descricao,preco,categoria_id,bloco_id,participantes_id) values('Oficina de GitHub','Controle versões de seus projetos',80.00,1,1,2);
+insert into tb_atividade(nome,descricao,preco,categoria_id,bloco_id,participantes_id) values('Oficina de GitHub','Controle versões de seus projetos',80.00,2,3,1)
+insert into tb_atividade(nome,descricao,preco,categoria_id,bloco_id,participantes_id) values('Curso de HTML','Aprenda HTML de forma pratica',50.00,1,1,3);
+insert into tb_atividade(nome,descricao,preco,categoria_id,bloco_id,participantes_id) values('Curso de HTML','Aprenda HTML de forma pratica',50.00,1,2,2);
+insert into tb_atividade(nome,descricao,preco,categoria_id,bloco_id,participantes_id) values('Curso de HTML','Aprenda HTML de forma pratica',50.00,2,2,3);
+insert into tb_atividade(nome,descricao,preco,categoria_id,bloco_id,participantes_id) values('Curso de HTML','Aprenda HTML de forma pratica',50.00,2,2,4);
