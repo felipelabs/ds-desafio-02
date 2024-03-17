@@ -1,10 +1,17 @@
 package com.devsuperior.desafio.entities;
 
+
+
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -30,6 +37,12 @@ public class Atividade {
 	@ManyToOne
     @JoinColumn(name = "participantes_id")
     private Participantes participantes;
+	
+	@ManyToMany
+	@JoinTable(name = "atividades_participantes",
+	joinColumns = @JoinColumn(name = "atividades_id"),
+	inverseJoinColumns = @JoinColumn(name = "participantes_id"))
+	private Set<Participantes> participante = new HashSet<>();
 	
 	public Atividade() {
 	}

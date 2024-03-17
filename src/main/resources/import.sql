@@ -10,6 +10,9 @@ insert into tb_bloco(inicio,fim) values('2017-09-26 08:00:00', '2017-09-26 11:00
 insert into tb_categoria(categoria) values('Curso');
 insert into tb_categoria(categoria) values('Oficina');
 
+insert into atividades_participantes(atividades_id,participantes_id) values (1,1);
+insert into atividades_participantes(atividades_id,participantes_id) values (2,2);
+
 insert into tb_atividade(nome,descricao,preco,categoria_id,bloco_id,participantes_id) values('Curso de HTML','Aprenda HTML de forma pratica',80.00,1,1,1);
 insert into tb_atividade(nome,descricao,preco,categoria_id,bloco_id,participantes_id) values('Oficina de GitHub','Controle versões de seus projetos',80.00,1,1,2);
 insert into tb_atividade(nome,descricao,preco,categoria_id,bloco_id,participantes_id) values('Oficina de GitHub','Controle versões de seus projetos',80.00,2,3,1)
